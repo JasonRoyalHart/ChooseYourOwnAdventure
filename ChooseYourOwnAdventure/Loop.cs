@@ -96,7 +96,7 @@ namespace ChooseYourOwnAdventure
                     case "li":
                     case "list":
                         {
-                            Console.WriteLine("Available commands: north, east, west, south, look, rob, fish, talk, search, cut, list.");
+                            Console.WriteLine("Available commands: north, east, west, south, look, rob, fish, talk, search, cut, kick, list.");
                         }
                         break;
                     case "rob":
@@ -210,9 +210,16 @@ namespace ChooseYourOwnAdventure
                     case "kick steve":
                     case "kick punk rock steve":
                         {
-                            Console.WriteLine("You kick Punk Rock Steve. He falls over and starts to cry.");
-                            player.setSteveKicked(true);
-                            people[4].setQuestCompleted(true);
+                            if (player.getLocation() == 7 && !player.getSteveKicked())
+                            {
+                                Console.WriteLine("You kick Punk Rock Steve. He falls over and starts to cry.");
+                                player.setSteveKicked(true);
+                                people[4].setQuestCompleted(true);
+                            }
+                            else
+                            {
+                                Console.WriteLine("You can't kick anything now.");
+                            }
                             break;
                         }
                     default:
